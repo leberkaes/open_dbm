@@ -24,6 +24,6 @@ class ConfigDeriveReader(object):
             feature_config = feature_config_yml
 
         with open(feature_config, 'r') as ymlfile:
-            config = yaml.load(ymlfile)
+            config = yaml.load(ymlfile, Loader = yaml.SafeLoader)
             self.base_derive = config
             
