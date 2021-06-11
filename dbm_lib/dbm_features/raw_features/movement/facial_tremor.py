@@ -139,7 +139,7 @@ def fac_tremor_process(video_uri, out_dir, r_config, model_output=False):
     
     
     """
-#     try:
+    try:
         
     input_loc, out_loc, fl_name = ut.filter_path(video_uri, out_dir)
     of_csv_path = glob.glob(join(out_loc, fl_name + '_openface_lmk/*.csv'))
@@ -152,13 +152,13 @@ def fac_tremor_process(video_uri, out_dir, r_config, model_output=False):
 
         feats = compute_features(of_csv_path , df_of, r_config)
         
-#         if model_output:
-#             result = score(feats, r_config)
-#             feats = pd.concat([feats, result], axis=1)
+         if model_output:
+             result = score(feats, r_config)
+             feats = pd.concat([feats, result], axis=1)
             
         ut.save_output(feats, out_loc, fl_name, ft_dir, csv_ext)
 
 
 
-#     except Exception as e:
+     except Exception as e:
         logger.error('Failed to process video file')
